@@ -1,83 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        .hidden {
-            display: none;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Page</title>
+  <!-- Linking Google Fonts for typography -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap">
+  <style>
+    /* Set a background image with full coverage */
+    body {
+      background: url('https://img.freepik.com/premium-photo/abstract-blurred-sky-colorful_40299-22.jpg') no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    /* Styling the modal container */
+    .modal {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 36px; /* Space between child elements */
+      width: 380px;
+      padding: 24px;
+      border-radius: 40px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100%);
+      box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0);
+      transition: 0.4s ease height, 0.4s ease padding, 0.2s border-radius, 0.6s ease box-shadow;
+    }
+
+    /* Add a shadow effect on hover */
+    .modal:hover {
+      box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.025);
+    }
+
+    /* Style adjustments when the modal is active */
+    .modal.active {
+      height: auto;
+      padding: 32px;
+      border-radius: 48px;
+    }
+
+    /* Wrapper for input fields */
+    .field-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    /* Styling for input fields */
+    .field {
+      font-family: "Instrument Sans", sans-serif;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      min-height: 48px;
+      border-radius: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 0 12px;
+      background: none;
+      color: #000;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    /* Change border color on focus */
+    .field:focus {
+      border: 1px solid rgba(0, 0, 0, 0.5);
+    }
+
+    /* Placeholder styling */
+    .field::placeholder {
+      opacity: 0.5;
+      color: #000;
+    }
+
+    /* Button styling */
+    .sign {
+      font-family: "JetBrains Mono", monospace;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      height: 44px;
+      border-radius: 12px;
+      padding: 0 14px;
+      background: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    /* Darken button on hover */
+    .sign:hover {
+      background-color: #444;
+    }
+  </style>
 </head>
 <body>
-
-<!-- Bolded Homepage -->
-<div id="home" class="section">
-    <h1><b>Welcome to Our Simple Website</b></h1>
-    <p><b>Click below to get started!</b></p>
-    <button onclick="start()">Get Started</button>
-</div>
-
-<!-- Signup/Login Form -->
-<div id="auth" class="section hidden">
-    <h1><b>Sign Up or Log In</b></h1>
-    <form id="authForm" onsubmit="handleAuth(event)">
-        <input type="text" id="username" placeholder="Enter your username" required><br>
-        <button type="submit">Submit</button>
+  <!-- Modal container for signup form -->
+  <div class="modal">
+    <h2 style="text-align: center; font-family: 'Instrument Sans', sans-serif; color: #000;">Sign Up</h2>
+    <!-- Signup form -->
+    <form id="signup-form">
+      <!-- Email input field -->
+      <div class="field-wrapper">
+        <input type="email" class="field" id="email" placeholder="Email" required>
+      </div>
+      <!-- Password input field -->
+      <div class="field-wrapper">
+        <input type="password" class="field" id="password" placeholder="Password" required>
+      </div>
+      <!-- Submit button -->
+      <button type="submit" class="sign">Sign Up</button>
     </form>
-</div>
+  </div>
 
-<!-- Simple UI -->
-<div id="dashboard" class="section hidden">
-    <h1><b>Welcome, <span id="user"></span>!</b></h1>
-    <p><b>You are now logged in.</b></p>
-</div>
-
-<script>
-    // Start the process
-    function start() {
-        const user = localStorage.getItem('user');
-        if (user) {
-            showDashboard(user);
-        } else {
-            showAuth();
-        }
-    }
-
-    // Show Signup/Login Form
-    function showAuth() {
-        document.getElementById('home').classList.add('hidden');
-        document.getElementById('auth').classList.remove('hidden');
-    }
-
-    // Handle Signup/Login
-    function handleAuth(event) {
-        event.preventDefault();
-        const username = document.getElementById('username').value;
-        localStorage.setItem('user', username);
-        showDashboard(username);
-    }
-
-    // Show Dashboard
-    function showDashboard(user) {
-        document.getElementById('auth').classList.add('hidden');
-        document.getElementById('home').classList.add('hidden');
-        document.getElementById('dashboard').classList.remove('hidden');
-        document.getElementById('user').textContent = user;
-    }
-</script>
-
+  <script>
+    // Adding an event listener to handle form submission
+    document.getElementById('signup-form').addEventListener('submit', function(event) {
+      // Prevent the form from refreshing the page
+      event.preventDefault();
+      // Retrieve input values
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      // Display an alert with the captured values
+      alert(`Email: ${email}\nPassword: ${password}`);
+    });
+  </script>
 </body>
 </html>
