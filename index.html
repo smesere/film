@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Bolded Homepage -->
+<div id="home" class="section">
+    <h1><b>Welcome to Our Simple Website</b></h1>
+    <p><b>Click below to get started!</b></p>
+    <button onclick="start()">Get Started</button>
+</div>
+
+<!-- Signup/Login Form -->
+<div id="auth" class="section hidden">
+    <h1><b>Sign Up or Log In</b></h1>
+    <form id="authForm" onsubmit="handleAuth(event)">
+        <input type="text" id="username" placeholder="Enter your username" required><br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<!-- Simple UI -->
+<div id="dashboard" class="section hidden">
+    <h1><b>Welcome, <span id="user"></span>!</b></h1>
+    <p><b>You are now logged in.</b></p>
+</div>
+
+<script>
+    // Start the process
+    function start() {
+        const user = localStorage.getItem('user');
+        if (user) {
+            showDashboard(user);
+        } else {
+            showAuth();
+        }
+    }
+
+    // Show Signup/Login Form
+    function showAuth() {
+        document.getElementById('home').classList.add('hidden');
+        document.getElementById('auth').classList.remove('hidden');
+    }
+
+    // Handle Signup/Login
+    function handleAuth(event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+        localStorage.setItem('user', username);
+        showDashboard(username);
+    }
+
+    // Show Dashboard
+    function showDashboard(user) {
+        document.getElementById('auth').classList.add('hidden');
+        document.getElementById('home').classList.add('hidden');
+        document.getElementById('dashboard').classList.remove('hidden');
+        document.getElementById('user').textContent = user;
+    }
+</script>
+
+</body>
+</html>
