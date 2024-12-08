@@ -37,6 +37,7 @@
             transform: perspective(800px);
             transform-style: preserve-3d;
             cursor: pointer;
+            position: relative;
         }
 
         /* Hover effects for cards */
@@ -53,7 +54,7 @@
             overflow: hidden;
             border-radius: 10px;
             box-shadow: rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0 0 6px;
-            transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+            transition: transform 1s cubic-bezier(0.445, 0.05, 0.55, 0.95), box-shadow 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
         }
 
         .card-bg {
@@ -65,7 +66,7 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
-            transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+            transition: opacity 0.6s;
             pointer-events: none;
         }
 
@@ -110,7 +111,7 @@
     <div class="title">Hover over the cards</div>
     
     <div id="app" class="container">
-        <div class="card-wrap" v-for="(item, index) in cards" :key="index">
+        <div class="card-wrap" v-for="(item, index) in cards" :key="index" @mousemove="handleMouseMove" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
             <div class="card">
                 <div class="card-bg" :style="{ backgroundImage: 'url(' + item.image + ')' }"></div>
                 <div class="card-info">
@@ -148,6 +149,31 @@
                         image: 'https://images.unsplash.com/photo-1479621051492-5a6f9bd9e51a?dpr=2&auto=compress,format&fit=crop&w=1199&h=811&q=80&cs=tinysrgb&crop='
                     }
                 ]
+            },
+            methods: {
+                handleMouseMove(event) {
+                    const card = event.currentTarget;
+                    const cardWidth = card.offsetWidth;
+                    const cardHeight = card.offsetHeight;
+                    const mouseX = event.offsetX;
+                    const mouseY = event.offsetY;
+
+                    const rotateX = (mouseY / cardHeight - 0.5) * 20;
+                    const rotateY = (mouseX / cardWidth - 0.5) * -20;
+
+                    card.querySelector('.card').style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                    card.querySelector('.card-bg').style.transform = `translateX(${(mouseX / cardWidth - 0.5) * -30}px) translateY(${(mouseY / cardHeight - 0.5) * -30}px)`;
+                },
+                handleMouseEnter(event) {
+                    // Reset transformation on mouse enter
+                    event.currentTarget.querySelector('.card').style.transition = 'transform 0.1s ease-out';
+                },
+                handleMouseLeave(event) {
+                    // Reset card rotation when mouse leaves
+                    const card = event.currentTarget.querySelector('.card');
+                    card.style.transition = 'transform 0.6s ease-in-out';
+                    card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+                }
             }
         });
     </script>
