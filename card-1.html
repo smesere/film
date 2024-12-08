@@ -3,75 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canyons - Film Details</title>
+    <title>Canyons - Film Website</title>
     <style>
         body {
             font-family: 'Raleway', sans-serif;
-            background: linear-gradient(135deg, #1e1e30, #2a2948);
-            color: #fff;
             margin: 0;
-            padding: 0;
-        }
-
-        .content {
+            background-color: #101010;
+            color: #f7f7f7;
             text-align: center;
-            padding: 40px;
+            padding: 20px;
         }
 
-        .content h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-
-        .content p {
-            font-size: 18px;
-            margin-bottom: 20px;
+        .video-container {
+            margin: 40px 0;
         }
 
         iframe {
-            margin-top: 20px;
             width: 80%;
-            height: 400px;
+            height: 450px;
             border: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: #ff5722;
+            font-size: 36px;
+            margin: 20px 0;
+        }
+
+        p {
+            color: #ddd;
+            font-size: 18px;
+            margin-bottom: 30px;
         }
 
         .similar-videos {
+            margin-top: 50px;
+        }
+
+        .similar-videos a {
+            display: block;
+            color: #ff5722;
+            text-decoration: none;
+            margin: 10px 0;
+        }
+
+        .similar-videos a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
             margin-top: 40px;
-        }
-
-        .similar-videos h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .footer {
-            background: #1e1e30;
-            color: #aaa;
+            background-color: #1f1f1f;
+            color: #fff;
             padding: 20px;
-            text-align: center;
-            margin-top: 40px;
-            font-size: 14px;
         }
     </style>
 </head>
 <body>
+    <h1>Canyons</h1>
+    <p>An epic journey through the canyons. A breathtaking adventure.</p>
 
-    <div class="content">
-        <h1>Canyons</h1>
-        <p>An epic journey through the canyons. A breathtaking adventure.</p>
+    <!-- Video -->
+    <div class="video-container">
         <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-
-        <div class="similar-videos">
-            <h2>Similar Videos</h2>
-            <p><a href="https://www.youtube.com/watch?v=GmG25PTzHzE">Another Canyon Adventure</a></p>
-            <p><a href="https://www.youtube.com/watch?v=hb7GLchHWGo">Exploring Desert Canyons</a></p>
-        </div>
     </div>
 
-    <div class="footer">
-        <p>&copy; 2024 Film & Movies | <a href="#">Privacy Policy</a></p>
+    <!-- Similar Videos -->
+    <div class="similar-videos">
+        <h2>Similar Videos</h2>
+        <a href="https://www.youtube.com/watch?v=GmG25PTzHzE" target="_blank">Another Canyon Adventure</a>
+        <a href="https://www.youtube.com/watch?v=hb7GLchHWGo" target="_blank">Exploring Desert Canyons</a>
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Cool Film Website | <a href="#">Privacy Policy</a></p>
+    </footer>
 </body>
 </html>
