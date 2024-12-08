@@ -5,55 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Cool Website</title>
     <style>
+        /* Global body styles */
         body {
             font-family: 'Instrument Sans', sans-serif;
+            margin: 0;
+            padding: 0;
             background: url('https://img.freepik.com/premium-photo/abstract-blurred-sky-colorful_40299-22.jpg') no-repeat center center fixed;
             background-size: cover;
             color: white;
-            min-height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
+            min-height: 100vh;
         }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+
+        /* Header styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
         }
-        p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
+        .header h1 {
+            font-size: 2.5rem;
+            margin: 0;
         }
-        button {
-            font-family: 'JetBrains Mono', monospace;
-            background: #ff5f6d;
-            background: linear-gradient(135deg, #ff5f6d, #ffc371);
-            border: none;
-            padding: 15px 30px;
-            color: white;
-            font-size: 16px;
+        .user-profile {
+            font-size: 1.2rem;
             font-weight: bold;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
         }
-        button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+
+        /* Main content area (Netflix-like grid) */
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            width: 200px;
+            height: 300px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome, <span id="user"></span>!</h1>
-    <p>Enjoy your experience!</p>
-    <button onclick="window.location.href='index.html'">Go Home</button>
+    <div class="header">
+        <h1>Cool Website</h1>
+        <div class="user-profile" id="user">Welcome, User!</div>
+    </div>
+    <div class="content">
+        <!-- Netflix-like content cards -->
+        <div class="card">
+            <img src="https://via.placeholder.com/200x300.png?text=Movie+1" alt="Movie 1">
+            <div class="card-info">Movie 1</div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/200x300.png?text=Movie+2" alt="Movie 2">
+            <div class="card-info">Movie 2</div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/200x300.png?text=Movie+3" alt="Movie 3">
+            <div class="card-info">Movie 3</div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/200x300.png?text=Movie+4" alt="Movie 4">
+            <div class="card-info">Movie 4</div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/200x300.png?text=Movie+5" alt="Movie 5">
+            <div class="card-info">Movie 5</div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/200x300.png?text=Movie+6" alt="Movie 6">
+            <div class="card-info">Movie 6</div>
+        </div>
+    </div>
 
     <script>
         // Get the user from local storage and display on the dashboard
         const user = localStorage.getItem('user');
         if (user) {
-            document.getElementById('user').textContent = user;
+            document.getElementById('user').textContent = `Welcome, ${user}!`;
         } else {
             window.location.href = 'index.html';  // Redirect to home if not logged in
         }
