@@ -8,129 +8,79 @@
         body {
             font-family: 'Raleway', sans-serif;
             background-color: #f7f7f7;
-            margin: 0;
-            padding: 0;
-        }
-
-        .content {
             text-align: center;
-            padding: 50px;
+            padding: 40px;
         }
 
-        h1 {
+        .content h1 {
             font-size: 36px;
-            font-weight: 700;
             color: #5D4037;
+            font-weight: 700;
         }
 
-        p {
+        .content p {
             font-size: 18px;
             color: #333;
             margin-top: 20px;
         }
 
-        /* Video container styles */
-        .video-container {
-            margin-top: 30px;
-            max-width: 800px;
-            margin: 30px auto;
+        .play-button {
+            font-size: 24px;
+            background-color: #FF5722;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .play-button:hover {
+            background-color: #FF7043;
         }
 
         iframe {
-            width: 100%;
-            height: 400px;
+            margin-top: 40px;
+            width: 80%;
+            height: 500px;
             border: none;
         }
 
-        /* Footer styles */
-        footer {
+        .footer {
             background-color: #5D4037;
             color: white;
-            text-align: center;
             padding: 20px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            text-align: center;
+            margin-top: 40px;
         }
 
-        footer a {
+        .footer a {
             color: #FF5722;
             text-decoration: none;
-            font-weight: bold;
-        }
-
-        footer a:hover {
-            color: #FF7043;
-        }
-
-        /* Similar Videos Section */
-        .similar-videos {
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        .similar-videos h2 {
-            font-size: 24px;
-            color: #5D4037;
-        }
-
-        .video-thumbnail {
-            display: inline-block;
-            margin: 15px;
-            cursor: pointer;
-        }
-
-        .video-thumbnail img {
-            width: 200px;
-            height: 120px;
-            border-radius: 5px;
-        }
-
-        .video-thumbnail p {
-            color: #333;
-            font-weight: bold;
-            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <!-- Main content -->
+
     <div class="content">
         <h1>Canyons</h1>
         <p>An epic journey through the canyons. A breathtaking adventure.</p>
+        <button class="play-button" onclick="window.location.href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'">Play Now</button>
 
-        <!-- Sample Video -->
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Canyons Video"></iframe>
-        </div>
+        <!-- Embed Video -->
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
 
-        <!-- Similar Videos Section -->
-        <div class="similar-videos">
-            <h2>Similar Videos</h2>
-            <div class="video-thumbnail">
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-                    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg" alt="Canyons Video">
-                    <p>Adventure in Canyons</p>
-                </a>
-            </div>
-            <div class="video-thumbnail">
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-                    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg" alt="Another Canyons Video">
-                    <p>Exploring the Depths</p>
-                </a>
-            </div>
-            <div class="video-thumbnail">
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-                    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg" alt="Mountain Adventure Video">
-                    <p>Mountain Adventures</p>
-                </a>
-            </div>
+        <!-- Similar Videos -->
+        <h2>Similar Videos</h2>
+        <div>
+            <a href="https://www.youtube.com/watch?v=GmG25PTzHzE">Another Canyon Adventure</a><br>
+            <a href="https://www.youtube.com/watch?v=hb7GLchHWGo">Exploring Desert Canyons</a>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Cool Website | <a href="/privacy-policy">Privacy Policy</a></p>
-    </footer>
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>&copy; 2024 Cool Website | <a href="#">Privacy Policy</a></p>
+    </div>
+
 </body>
 </html>
