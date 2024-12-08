@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Cool Website</title>
+    <style>
+        body {
+            font-family: 'Instrument Sans', sans-serif;
+            background: url('https://img.freepik.com/premium-photo/abstract-blurred-sky-colorful_40299-22.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        button {
+            font-family: 'JetBrains Mono', monospace;
+            background: #ff5f6d;
+            background: linear-gradient(135deg, #ff5f6d, #ffc371);
+            border: none;
+            padding: 15px 30px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, <span id="user"></span>!</h1>
+    <p>Enjoy your experience!</p>
+    <button onclick="window.location.href='index.html'">Go Home</button>
+
+    <script>
+        // Get the user from local storage and display on the dashboard
+        const user = localStorage.getItem('user');
+        if (user) {
+            document.getElementById('user').textContent = user;
+        } else {
+            window.location.href = 'index.html';  // Redirect to home if not logged in
+        }
+    </script>
+</body>
+</html>
